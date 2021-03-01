@@ -20,6 +20,12 @@ class Job < ApplicationRecord
     validates :age_requirements_id
   end
 
-  
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :recruitment_type
+  belongs_to :employment_status
+  belongs_to :holiday
+  belongs_to :experience
+  belongs_to :educational_background
+  belongs_to :age_requirements
 
 end

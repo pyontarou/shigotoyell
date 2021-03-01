@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
-  def index
-    
+  def show
+    @companies = Company.all
+    @company = Company.new
   end
 end
