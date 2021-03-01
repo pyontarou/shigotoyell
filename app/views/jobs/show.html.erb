@@ -67,6 +67,62 @@
         </tr>
       </tbody>
     </table>
+    <%# 事業者情報 %>
+    <div class="items-detail">
+      <div class="weight-bold-text">
+        <span class="main-name">掲載事業者情報</span>
+     </div>
+      <li class='list'>
+        <div class='item-info'>
+          <span class="items-name">業種</span>
+          <h3 class='item-name'>
+            <%= @company.business_content[:name] %>
+          </h3>
+        </div>
+        <div class='item-info'>
+          <span class="items-name">会社名</span>
+          <h3 class='item-name'>
+            <%= @company.company_name %>
+          </h3>
+        </div>
+        <div class='item-info'>
+          <span class="items-name">代表者氏名</span>
+          <h3 class='item-name'>
+            <%= @company.representative_name_kana %>
+            <br><%= @company.representative_name %>
+          </h3>
+        </div>
+        <div class='item-info'>
+          <span class="items-name">設立年月日</span>
+          <h3 class='item-name'>
+            <%= @company.foundation_date %>
+          </h3>
+        </div>
+        <div class='item-info'>
+          <span class="items-name">従業員数</span>
+          <h3 class='item-name'>
+            <%= @company.employee_number %>
+          </h3>
+        </div>
+        <div class='item-info'>
+          <span class="items-name">所在地</span>
+          <h3 class='item-name'>
+            <%= @company.prefecture_code %>
+            <br><%= @company.prefectures[:name] %>
+            <%= @company.city %>
+            <%= @company.address %>
+            <%= @company.building_name  %>
+          </h3>
+        </div>
+        <div class='item-info'>
+          <span class="items-name">電話番号</span>
+          <h3 class='item-name'>
+            <%= @company.phone_number %>
+          </h3>
+        </div>
+      </li>
+    </div>
+    <%# 事業者情報 %>
     <div class="option">
       <div class="favorite-btn">
         <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
