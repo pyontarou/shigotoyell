@@ -15,7 +15,7 @@ class Job < ApplicationRecord
     validates :recruitment_type_id
     validates :employment_status_id
     validates :holiday_id
-    validates :experience＿id
+    validates :experience_id
     validates :educational_background_id
     validates :age_requirements_id
   end

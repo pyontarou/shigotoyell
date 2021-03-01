@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_015114) do
     t.integer "employment_status_id", null: false
     t.string "working_hours", null: false
     t.integer "holiday_id", null: false
-    t.integer "experience＿id", null: false
+    t.integer "experience_id", null: false
     t.integer "educational_background_id", null: false
     t.integer "age_requirements_id", null: false
     t.bigint "company_id", null: false

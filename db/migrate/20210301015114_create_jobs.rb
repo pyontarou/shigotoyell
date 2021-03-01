@@ -10,7 +10,7 @@ class CreateJobs < ActiveRecord::Migration[6.0]
       t.integer :employment_status_id,      null: false
       t.string  :working_hours,             null: false
       t.integer :holiday_id,                null: false
-      t.integer :experience＿id,            null: false
+      t.integer :experience_id,            null: false
       t.integer :educational_background_id, null: false
       t.integer :age_requirements_id,       null: false
       t.references  :company,               null: false, foreign_key: true 
