@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_134416) do
+ActiveRecord::Schema.define(version: 2021_03_01_015114) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "company_name", null: false
@@ -34,6 +34,25 @@ ActiveRecord::Schema.define(version: 2021_02_28_134416) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+  end
+
+  create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "recruitment_type_id", null: false
+    t.text "job_description", null: false
+    t.text "qualification", null: false
+    t.string "workplace", null: false
+    t.string "salary", null: false
+    t.string "bonus", null: false
+    t.integer "employment_status_id", null: false
+    t.string "working_hours", null: false
+    t.integer "holiday_id", null: false
+    t.integer "experience＿id", null: false
+    t.integer "educational_background_id", null: false
+    t.integer "age_requirements_id", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -60,4 +79,5 @@ ActiveRecord::Schema.define(version: 2021_02_28_134416) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "jobs", "companies"
 end
