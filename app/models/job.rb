@@ -1,6 +1,6 @@
 class Job < ApplicationRecord
-  belongs_to :companies
-  belongs_to :user
+  belongs_to :company
+  # belongs_to :user
 
   with_options presence: true do
     validates :job_description
