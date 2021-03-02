@@ -1,10 +1,10 @@
 <div class="items-sell-contents">
   <header class="items-sell-header">
-    <%= link_to image_tag('logo.png' , size: '185x120'), "/" %>
+    <%= link_to image_tag('logo.png' , size: '185x120'), company_path(@current_company) %>
 
   </header>
   <div class="items-sell-main">
-    <h2 class="items-sell-title">商品の情報を入力</h2>
+    <h2 class="items-sell-title">求人情報を入力</h2>
     <%= form_with model:@job,local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
@@ -19,6 +19,11 @@
       <div class="form">
         <%= f.collection_select(:recruitment_type_id, RecruitmentType.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
       </div>
+      <div class="weight-bold-text">
+          雇用形態
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:employment_status_id, EmploymentStatus.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
       <div class="items-explain">
         <div class="weight-bold-text">
           仕事内容
@@ -31,7 +36,7 @@
           必要な経験・スキル・免許・資格など
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :qualification, class:"items-text", id:"item-info", placeholder:"必要な経験・スキル・免許・資格などの説明（必須 1,000文字まで）例）◯◯実務経験△年、◯◯免許必須 、◯◯資格お持ちの方優遇" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :qualification, class:"items-text", id:"item-info", placeholder:"必要な経験・スキル・免許・資格などの説明   例）◯◯実務経験△年、◯◯免許必須 、◯◯資格お持ちの方優遇" ,rows:"7" ,maxlength:"1000" %>
       </div>
     <%# /商品名と商品説明 %>
 
@@ -41,34 +46,30 @@
           勤務地
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :workplace, class:"items-text", id:"item-info", placeholder:"勤務地（必須 1,000文字まで）例）◯◯県△△市□□2丁目1番地。" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :workplace, class:"items-text-short", id:"item-info", placeholder:"勤務地   例）◯◯県△△市□□2丁目1番地。" ,rows:"7" ,maxlength:"1000" %>
       </div>
       <div class="items-explain">
         <div class="weight-bold-text">
           給与
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :salary, class:"items-text", id:"item-info", placeholder:"給与（必須 1,000文字まで）例）月給◯◯万円〜、時給△△△円〜、資格手当・家族手当、など" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :salary, class:"items-text-short", id:"item-info", placeholder:"給与  例）月給◯◯万円〜、時給△△△円〜、資格手当・家族手当、など" ,rows:"7" ,maxlength:"1000" %>
       </div>
       <div class="items-explain">
         <div class="weight-bold-text">
           報酬
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :bonus, class:"items-text", id:"item-info", placeholder:"報酬（必須 1,000文字まで）例）昇給年1回（月あたり0~8000円）、賞与年2回(賞与月数:計3ヶ月分) ※業績により変動あり、など" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :bonus, class:"items-text-short", id:"item-info", placeholder:"報酬   例）昇給年1回（月あたり0~8000円）、賞与年2回(賞与月数:計3ヶ月分) ※業績により変動あり、など" ,rows:"7" ,maxlength:"1000" %>
       </div>
       <div class="form">
-        <div class="weight-bold-text">
-          雇用形態
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.collection_select(:employment_status_id, EmploymentStatus.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        
         <div class="items-explain">
           <div class="weight-bold-text">
             勤務時間・時間外労働時間
             <span class="indispensable">必須</span>
           </div>
-          <%= f.text_area :working_hours, class:"items-text", id:"item-info", placeholder:"勤務時間・時間外労働時間（必須 1,000文字まで）例）8:30〜17:00、休憩60分、時間外労働あり（月平均：10時間）など" ,rows:"7" ,maxlength:"1000" %>
+          <%= f.text_area :working_hours, class:"items-text-short", id:"item-info", placeholder:"勤務時間・時間外労働時間   例）8:30〜17:00、休憩60分、時間外労働あり（月平均：10時間）など" ,rows:"7" ,maxlength:"1000" %>
         </div>
         <div class="weight-bold-text">
           休日
@@ -100,9 +101,9 @@
 
     <%# 注意書き %>
     <ul class="caution">
-      <li class="sentence">
+      <P class="sentence">
       ※注意事項
-      </li>
+      </P>
       <li class="sentence">
         採用予定の仕事の「職種」「仕事の内容」「就業時間」「休日」「就業場所」「雇用形態（正社員、契約社員等）」などの条件を明示していただいております応募者を採用する場合にはこれらの求人票に記載した条件を順守するようお願いします。
       </li>

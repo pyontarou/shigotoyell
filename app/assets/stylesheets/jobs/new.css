@@ -43,7 +43,7 @@
 .weight-bold-text {
   font-weight: bold;
   min-width: 170px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   display: flex;
 }
 
@@ -71,6 +71,16 @@
   border: 1px solid #ccc;
   font-size: 16px;
   resize: none;
+}
+.items-text-short{
+  width: 100%;
+  height: 100px;
+  padding: 16px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  resize: none;
+  margin-bottom: 15px;
 }
 
 .items-explain {
@@ -114,9 +124,8 @@
   padding: 5vh 0;
 }
 
-.sentence>a {
-  color: #0099e8;
-  text-decoration: none;
+.sentence {
+  list-style:square;
 }
 
 /* /注意書き */
