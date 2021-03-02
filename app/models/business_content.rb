@@ -11,6 +11,6 @@ class BusinessContent < ActiveHash::Base
     {id: 38, name: 'サービス業'}, {id: 39, name: '公務'}, {id: 40, name: '生活関連サービス業,娯楽業'}, {id: 41, name: 'その他'}]
 
   include ActiveHash::Associations
-  has_many :users
-  has_many :companies
+  has_many :jobs
+  
 end

@@ -56,18 +56,16 @@
 | recruitment_type_id      | integer    | null: false                    |
 | job_description          | text       | null: false                    |
 | qualification            | text       | null: false                    |
-| prefectures_id           | integer    | null: false                    |
 | workplace                | string     | null: false                    |
 | salary                   | string     | null: false                    |
 | bonus                    | string     | null: false                    |
 | employment_status_id     | integer    | null: false                    |
 | working_hours            | string     | null: false                    |
 | holiday_id               | integer    | null: false                    |
-| experience＿id           | integer    | null: false                    |
+| experience_id            | integer    | null: false                    |
 | educational_background_id| integer    | null: false                    |
 | age_requirements_id      | integer    | null: false                    |
 | company                  | references | null: false, foreign_key: true |
-| like                     | references | null: false, foreign_key: true |
 
 ### Association
 

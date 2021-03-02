@@ -1,159 +1,129 @@
 <div class="items-sell-contents">
   <header class="items-sell-header">
-    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+    <%= link_to image_tag('logo.png' , size: '185x120'), company_path(@current_company) %>
 
   </header>
   <div class="items-sell-main">
-    <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with local: true do |f| %>
+    <h2 class="items-sell-title">求人情報を入力</h2>
+    <%= form_with model:@job,local: true do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    <%= render 'shared/error_messages', model: f.object %>
 
-    <%# 出品画像 %>
-    <div class="img-upload">
-      <div class="weight-bold-text">
-        出品画像
-        <span class="indispensable">必須</span>
-      </div>
-      <div class="click-upload">
-        <p>
-          クリックしてファイルをアップロード
-        </p>
-        <%= f.file_field :hoge, id:"item-image" %>
-      </div>
-    </div>
-    <%# /出品画像 %>
+    
     <%# 商品名と商品説明 %>
     <div class="new-items">
       <div class="weight-bold-text">
-        商品名
+        募集職種 
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :hoge, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
-      <div class="items-explain">
-        <div class="weight-bold-text">
-          商品の説明
+      <div class="form">
+        <%= f.collection_select(:recruitment_type_id, RecruitmentType.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
+      </div>
+      <div class="weight-bold-text">
+          雇用形態
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :hoge, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.collection_select(:employment_status_id, EmploymentStatus.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          仕事内容
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :job_description, class:"items-text", id:"item-info", placeholder:"仕事内容の説明（必須 1,000文字まで）（「誰に」・「何を」・「行なう仕事」なのかを端的に記入してください）例）企業向けに、会社紹介パンフレットを企画提案していく営業です。事前のアポイント設定から商談、フォローまでご担当いただきます。" ,rows:"7" ,maxlength:"1000" %>
       </div>
-    </div>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          必要な経験・スキル・免許・資格など
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :qualification, class:"items-text", id:"item-info", placeholder:"必要な経験・スキル・免許・資格などの説明   例）◯◯実務経験△年、◯◯免許必須 、◯◯資格お持ちの方優遇" ,rows:"7" ,maxlength:"1000" %>
+      </div>
     <%# /商品名と商品説明 %>
 
     <%# 商品の詳細 %>
-    <div class="items-detail">
-      <div class="weight-bold-text">商品の詳細</div>
-      <div class="form">
+      <div class="items-explain">
         <div class="weight-bold-text">
-          カテゴリー
+          勤務地
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-category"}) %>
-        <div class="weight-bold-text">
-          商品の状態
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-sales-status"}) %>
+        <%= f.text_area :workplace, class:"items-text-short", id:"item-info", placeholder:"勤務地   例）◯◯県△△市□□2丁目1番地。" ,rows:"7" ,maxlength:"1000" %>
       </div>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          給与
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :salary, class:"items-text-short", id:"item-info", placeholder:"給与  例）月給◯◯万円〜、時給△△△円〜、資格手当・家族手当、など" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          報酬
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :bonus, class:"items-text-short", id:"item-info", placeholder:"報酬   例）昇給年1回（月あたり0~8000円）、賞与年2回(賞与月数:計3ヶ月分) ※業績により変動あり、など" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+      <div class="form">
+        
+        <div class="items-explain">
+          <div class="weight-bold-text">
+            勤務時間・時間外労働時間
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.text_area :working_hours, class:"items-text-short", id:"item-info", placeholder:"勤務時間・時間外労働時間   例）8:30〜17:00、休憩60分、時間外労働あり（月平均：10時間）など" ,rows:"7" ,maxlength:"1000" %>
+        </div>
+        <div class="weight-bold-text">
+          休日
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:holiday_id, Holiday.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+        <div class="weight-bold-text">
+          経験の有無
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:experience_id, Experience.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <div class="weight-bold-text">
+          学歴
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:educational_background_id, EducationalBackground.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <div class="weight-bold-text">
+          年齢
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:age_requirements_id, AgeRequirements.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
     </div>
     <%# /商品の詳細 %>
 
-    <%# 配送について %>
-    <div class="items-detail">
-      <div class="weight-bold-text question-text">
-        <span>配送について</span>
-        <a class="question" href="#">?</a>
-      </div>
-      <div class="form">
-        <div class="weight-bold-text">
-          配送料の負担
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
-        <div class="weight-bold-text">
-          発送元の地域
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-prefecture"}) %>
-        <div class="weight-bold-text">
-          発送までの日数
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
-      </div>
-    </div>
+    
     <%# /配送について %>
 
-    <%# 販売価格 %>
-    <div class="sell-price">
-      <div class="weight-bold-text question-text">
-        <span>販売価格<br>(¥300〜9,999,999)</span>
-        <a class="question" href="#">?</a>
-      </div>
-      <div>
-        <div class="price-content">
-          <div class="price-text">
-            <span>価格</span>
-            <span class="indispensable">必須</span>
-          </div>
-          <span class="sell-yen">¥</span>
-          <%= f.text_field :hoge, class:"price-input", id:"item-price", placeholder:"例）300" %>
-        </div>
-        <div class="price-content">
-          <span>販売手数料 (10%)</span>
-          <span>
-            <span id='add-tax-price'></span>円
-          </span>
-        </div>
-        <div class="price-content">
-          <span>販売利益</span>
-          <span>
-            <span id='profit'></span>円
-        </div>
-        </span>
-      </div>
-    </div>
-    <%# /販売価格 %>
+   
 
     <%# 注意書き %>
-    <div class="caution">
-      <p class="sentence">
-        <a href="#">禁止されている出品、</a>
-        <a href="#">行為</a>
-        を必ずご確認ください。
-      </p>
-      <p class="sentence">
-        またブランド品でシリアルナンバー等がある場合はご記載ください。
-        <a href="#">偽ブランドの販売</a>
-        は犯罪であり処罰される可能性があります。
-      </p>
-      <p class="sentence">
-        また、出品をもちまして
-        <a href="#">加盟店規約</a>
-        に同意したことになります。
-      </p>
-    </div>
+    <ul class="caution">
+      <P class="sentence">
+      ※注意事項
+      </P>
+      <li class="sentence">
+        採用予定の仕事の「職種」「仕事の内容」「就業時間」「休日」「就業場所」「雇用形態（正社員、契約社員等）」などの条件を明示していただいております応募者を採用する場合にはこれらの求人票に記載した条件を順守するようお願いします。
+      </li>
+      <li class="sentence">
+        記載した条件と異なる職種について採用をご希望の場合は、別の求人として分けてお申し込みください。
+        
+      </li>
+      <li class="sentence">
+        採用選考に当たっては、技能や経験、面接内容など、職務についての応募者の適性・能力により判断し、家族状況や生活環境といった、応募者の適性・能力とは関係ない事柄で判断しないようにお願いします。
+      </li>
+    </ul>
     <%# /注意書き %>
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
-      <%= f.submit "出品する" ,class:"sell-btn" %>
+      <%= f.submit "掲載する" ,class:"sell-btn" %>
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
   </div>
   <% end %>
 
-  <footer class="items-sell-footer">
-    <ul class="menu">
-      <li><a href="#">プライバシーポリシー</a></li>
-      <li><a href="#">フリマ利用規約</a></li>
-      <li><a href="#">特定商取引に関する表記</a></li>
-    </ul>
-    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
-    <p class="inc">
-      ©︎Furima,Inc.
-    </p>
-  </footer>
+  
 </div>

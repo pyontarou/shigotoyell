@@ -1,7 +1,7 @@
 <%# CSS・・・assets/stylesheets/shared/header.css %>
 <header class='top-page-header'>
   <div class='search-bar-contents'>
-    <%= link_to image_tag("logo.png", class:"logo-icon"), "/" %>
+    <%= link_to image_tag("logo.png", class:"logo-icon"), company_path %>
     
   </div>
   <div class='nav'>  
@@ -31,15 +31,13 @@
     </p> %>
   </div>
   <div class="applicant">
-  <%=link_to('#', class: 'applicant-btn') do %>
+  <%=link_to(new_job_path, class: 'applicant-btn') do %>
    <span class='applicant-btn-text'>求人掲載する</span>
-  <%#image_tag 'icon_camera.png' , size: '200x100' ,class: "applicant-btn-icon" %>
 <% end %>
 </div>
   <div class="applicant-edit">
   <%=link_to('#', class: 'applicant-btn-edit') do %>
    <span class='applicant-btn-edit-text'>登録内容の編集</span>
-  <%#image_tag 'icon_camera.png' , size: '200x100' ,class: "applicant-btn-icon" %>
 <% end %>
 </div>
  <%# FURIMAの特徴 %>
